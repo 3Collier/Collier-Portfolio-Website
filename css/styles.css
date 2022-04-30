@@ -1,0 +1,223 @@
+/* Desired Colors:
+#8066cc Purple
+#144973 Dark Teal
+#c95d6f Rose
+#f7c634 Creamy Yellow
+#cc0000 Deep Red
+#187dd8 Basic Blue
+#008000 Green
+#80471c Tawny
+#63c5da Sky
+#FCFBFC Frost
+#c5c6d0 Cloud
+#48aaad Teal
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #c5c6d0;
+  --secondary-color: #144973;
+  --white: #fff;
+  --black: #000;
+  --grid-background: #0492c2;
+  --body: 400;
+  --nav-label: bold 700;
+  --h1: 900;
+  --a-visited:#187dd8;
+  --a-active: #80471c;
+}
+
+body {
+  background-color: var(--primary-color);
+  font-family: 'Lato', sans-serif;
+  font-weight: var(--body);
+  text-align: center;
+}
+
+nav {
+  font-weight: var(--nav-label);
+}
+
+h1 {
+  font-weight: var(--h1);
+}
+
+ul {
+  list-style: none;
+}
+
+label {
+  font-weight: var(--nav-label);
+}
+
+a {
+  color: var(--black);
+}
+
+a:hover, a:focus {
+  /* No underlining when hovering over a link */
+  text-decoration: none;
+}
+
+a:visited {
+  /* visited link */
+  color: var(--a-visited);
+}
+
+a:active {
+  /* selected link */
+  color: var(--a-active);
+}
+
+button, .button {
+  /* overwrites browser defaults and resets the border */
+  border: none;
+  /* takes the font from the outer container */
+  display: inline-block;
+  /*takes the font from the outer container*/
+  font-family: inherit;
+  /* styles the background color, font color, and text decoration (underline, etc.) of the button */
+  background-color: var(--secondary-color);
+  color: var(--white);
+  text-decoration: none;
+  /*adds spacing to the button (this will be discussed more in-depth later) */
+  padding: 10px;
+  border-radius: 3px;
+  /* gives the button a bottom border with a width of 2px, a type of solid, and a color in RGBA format */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  transition-duration: 0.2s opacity;
+  ;
+}
+
+button:hover, button:focus, .button:hover, .button:focus {
+  /* lets the mouse appear as a hand when hovering over the button */
+  cursor: pointer;
+  /* reduces the opacity of the button to 80% */
+  opacity: 0.8;
+}
+
+.profile_portrait {
+  float: left;
+  width: 250px;
+  margin-right: 40px;
+  border-radius: 50%;
+}
+
+.main {
+  text-align: center;
+}
+
+.page-footer {
+  clear: both;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.profile {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.page-header {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+}
+
+.page_header_item {
+  flex: 0 1 200px;
+}
+
+.page-header_item:last-child {
+  flex-grow: 1;
+  text-align: right;
+  display: inline-block;
+}
+
+.navigation-list {
+  list-style-type: none;
+}
+
+.navigation-list li {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.grid_item {
+  background-color: var(--grid-background);
+  grid-gap: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+@keyframes color-change {
+  from {
+    fill: #030001;
+  }
+  to {
+    fill: #ffff00;
+  }
+}
+
+.left-house, .middle-house, .right-house, .house-1, .house-2, .house-3, .house-4, .house-5 {
+  animation: 3s color-change infinite alternate linear;
+}
+
+@keyframes cloud-move{
+  from {
+    transform: translate(0, 50px);
+  }
+  to {
+    transform: translate(200px, 50px);
+  }
+}
+
+.right-cloud {
+  animation: 3s cloud-move-reverse infinite alternate linear;
+}
+
+@keyframes cloud-move-reverse {
+  from {
+    transform: translate(446px, 48px);
+  }
+  to {
+    transform: translate(100px, 48px);
+  }
+}
+
+.left-cloud {
+  animation: 3s cloud-move infinite alternate linear;
+}
+
+
+
+@media all and (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media all and (min-width: 500px) and (max-width: 750px){
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media all and (max-width: 750px) {
+  .grid {
+    grid-gap: 10px;
+  }
+  .grid__item:last-child {
+    grid-column: auto / auto;
+    grid-row: auto / auto;
+  }
+  h1 {
+    font-size: 22px;
+  }
+}
